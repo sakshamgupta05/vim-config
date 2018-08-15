@@ -1,3 +1,19 @@
+set nocompatible
+
+:so ~/.vim/plugins.vim
+
+" enable syntax highlighting
+syntax enable
+
+" Make backspace behave the way it should
+set backspace=indent,eol,start
+
+" activate line numbers
+set number
+
+" show line number on the cursor position
+set ruler
+
 "---------------------Utilities-------------------------"
 " On pressing tab, insert 2 spaces
 set expandtab
