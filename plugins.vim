@@ -13,6 +13,12 @@ Plugin 'VundleVim/Vundle.vim'
 " Install Nerdtree
 Plugin 'scrooloose/nerdtree'
 
+" JavaScript Syntax Highlighting
+Plugin 'pangloss/vim-javascript'
+
+" JSX Syntax Highlighting
+Plugin 'mxw/vim-jsx'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
