@@ -25,6 +25,9 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+" Remap Esc key
+inoremap jj <ESC>
 "---------------------Utilities-------------------------"
 " On pressing tab, insert 2 spaces
 set expandtab
