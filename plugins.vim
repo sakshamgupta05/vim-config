@@ -16,6 +16,10 @@ Plugin 'scrooloose/nerdtree'
 " auto matching for brackets
 Plugin 'jiangmiao/auto-pairs'
 
+" status/tabline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 
