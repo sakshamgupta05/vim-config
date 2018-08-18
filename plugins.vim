@@ -10,13 +10,28 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Install Nerdtree
+" file system explorer
 Plugin 'scrooloose/nerdtree'
 
-" JavaScript Syntax Highlighting
+" auto matching for brackets
+Plugin 'jiangmiao/auto-pairs'
+
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+
+" syntax checking
+Plugin 'vim-syntastic/syntastic'
+
+" comment stuff out
+Plugin 'tpope/vim-commentary'
+
+" end certain structures
+Plugin 'tpope/vim-endwise'
+
+" JavaScript syntax highlighting
 Plugin 'pangloss/vim-javascript'
 
-" JSX Syntax Highlighting
+" JSX syntax highlighting
 Plugin 'mxw/vim-jsx'
 
 call vundle#end()            " required
