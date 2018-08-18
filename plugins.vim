@@ -19,6 +19,9 @@ Plugin 'jiangmiao/auto-pairs'
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 
+" Git line diff gutter
+Plugin 'airblade/vim-gitgutter'
+
 " syntax checking
 Plugin 'vim-syntastic/syntastic'
 
