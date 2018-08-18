@@ -38,6 +38,27 @@ set softtabstop=2
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
 
+"---------------------Visuals-------------------------"
+" change font
+set guifont=Operator\ Mono\ Lig:h16
+
+" colorschemes and statusline
+colorscheme one
+set background=dark
+let g:airline_themes='onedark'
+
+" Use 256, useful for working with terminal
+set t_Co=256
+
+" remove scrollbars
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+
+" encoding
+set encoding=UTF-8
+
 "---------------------Mappings-------------------------"
 " Make NERDTreetoggle
 map <C-n> :NERDTreeToggle<CR>
