@@ -41,6 +41,9 @@ Plugin 'pangloss/vim-javascript'
 " JSX syntax highlighting
 Plugin 'mxw/vim-jsx'
 
+" elixir syntax highlighting
+Plugin 'elixir-editors/vim-elixir'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
