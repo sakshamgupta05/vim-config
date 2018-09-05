@@ -18,7 +18,9 @@ Plugin 'jiangmiao/auto-pairs'
 
 " status/tabline
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+
+" onedark theme
+Plugin 'joshdick/onedark.vim'
 
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
@@ -35,14 +37,8 @@ Plugin 'tpope/vim-commentary'
 " end certain structures
 Plugin 'tpope/vim-endwise'
 
-" JavaScript syntax highlighting
-Plugin 'pangloss/vim-javascript'
-
-" JSX syntax highlighting
-Plugin 'mxw/vim-jsx'
-
-" elixir syntax highlighting
-Plugin 'elixir-editors/vim-elixir'
+" syntax highlighting
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()            " required
 filetype plugin indent on    " required

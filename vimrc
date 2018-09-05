@@ -14,21 +14,14 @@ set number
 " show line number on the cursor position
 set ruler
 
-" Disable Arrow keys in Escape mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-" Disable Arrow keys in Insert mode
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-
 " Remap Esc key
 inoremap jj <ESC>
+
+" change leader key
+let mapleader=' '
+
 "---------------------Utilities-------------------------"
+
 " On pressing tab, insert 2 spaces
 set expandtab
 
@@ -39,15 +32,12 @@ set softtabstop=2
 set shiftwidth=2
 
 "---------------------Visuals-------------------------"
-" change font
-set guifont=Operator\ Mono\ Lig:h16
 
 " colorschemes and statusline
-colorscheme one
-set background=dark
+colorscheme onedark
 let g:airline_themes='onedark'
 
-" Use 256, useful for working with terminal
+" use 256, useful for working with terminal
 set t_Co=256
 
 " remove scrollbars
@@ -59,6 +49,37 @@ set guioptions-=R
 " encoding
 set encoding=UTF-8
 
+" highlight current line
+set cursorline
+
+" cursor change in iTerm
+if $TERM_PROGRAM =~ "iTerm"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+"---------------------Search-------------------------"
+
+" highlight search results
+set hlsearch
+" incremental search
+set incsearch
+
 "---------------------Mappings-------------------------"
-" Make NERDTreetoggle
+
+" make it easy to edit vimrc
+nmap <Leader>ev :tabedit $MYVIMRC<cr>
+
+" turn off search highlight
+nmap <Leader><space> :nohlsearch<cr>
+
+" make NERDTreetoggle
 map <C-n> :NERDTreeToggle<CR>
+
+"---------------------Auto-Commands-------------------------"
+
+" automatically source the vimrc file on save
+augroup autosourcing
+  autocmd!
+  autocmd BufWritePost vimrc source %
+augroup END
