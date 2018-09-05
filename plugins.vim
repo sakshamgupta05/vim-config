@@ -37,7 +37,7 @@ Plugin 'tpope/vim-commentary'
 " end certain structures
 Plugin 'tpope/vim-endwise'
 
-" syntax highlighting
+" language packs (syntax highlighting)
 Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()            " required
