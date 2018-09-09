@@ -1,5 +1,3 @@
-set nocompatible
-
 :so ~/.vim/plugins.vim
 
 " enable syntax highlighting
@@ -65,6 +63,16 @@ set hlsearch
 " incremental search
 set incsearch
 
+"---------------------Split management-------------------------"
+
+set splitbelow
+set splitright
+
+nmap <Leader>j <C-W><C-J>
+nmap <Leader>k <C-W><C-K>
+nmap <Leader>h <C-W><C-H>
+nmap <Leader>l <C-W><C-L>
+
 "---------------------Mappings-------------------------"
 
 " make it easy to edit vimrc
@@ -74,7 +82,8 @@ nmap <Leader>ev :tabedit $MYVIMRC<cr>
 nmap <Leader><space> :nohlsearch<cr>
 
 " make NERDTreetoggle
-map <C-n> :NERDTreeToggle<CR>
+nmap <Leader>nt :NERDTreeToggle<cr>
+nmap <Leader>nf :NERDTreeFind<cr>
 
 "---------------------Auto-Commands-------------------------"
 
