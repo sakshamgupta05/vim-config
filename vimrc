@@ -1,5 +1,8 @@
 :so ~/.vim/plugins.vim
 
+" enable scrolling
+set mouse=a
+
 " enable syntax highlighting
 syntax enable
 
@@ -56,6 +59,10 @@ if $TERM_PROGRAM =~ "iTerm"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
 
+" highlight todo and fixme in comments
+hi myTodo ctermfg=white ctermbg=214
+hi myFixme ctermfg=white ctermbg=168
+
 "---------------------Search-------------------------"
 
 " highlight search results
@@ -91,4 +98,16 @@ nmap <Leader>nf :NERDTreeFind<cr>
 augroup autosourcing
   autocmd!
   autocmd BufWritePost vimrc source %
+augroup END
+
+" create group for todo
+augroup myTodo
+  autocmd!
+  autocmd Syntax * syntax match myTodo /\v\_.<TODO:/hs=s+1 containedin=.*Comment
+augroup END
+
+" create group for fixme
+augroup myFixme
+  autocmd!
+  autocmd Syntax * syntax match myFixme /\v\_.<FIXME:/hs=s+1 containedin=.*Comment
 augroup END
