@@ -2,6 +2,16 @@
 " Vim/Neovim Config
 " ----------------------------------------------------------------------------
 
+" vim specific configs
+if !has('nvim')
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/vim.vim'
+endif
+
+" neovim specific configs
+if has('nvim')
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/neovim.vim'
+endif
+
 " source plugins
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plugins.vim'
 
