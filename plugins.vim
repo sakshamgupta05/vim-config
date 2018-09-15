@@ -1,58 +1,74 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" ----------------------------------------------------------------------------
+" vim-plug plugins
+" ----------------------------------------------------------------------------
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" file system explorer
-Plugin 'scrooloose/nerdtree'
-
-" auto matching for brackets
-Plugin 'jiangmiao/auto-pairs'
-
-" status/tabline
-Plugin 'vim-airline/vim-airline'
+" ----------------------------------------------------------------------------
+" MARK: - Visual
+" ----------------------------------------------------------------------------
 
 " onedark theme
-Plugin 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 
-" Git wrapper
-Plugin 'tpope/vim-fugitive'
+" status/tabline
+Plug 'vim-airline/vim-airline'
 
-" Git line diff gutter
-Plugin 'airblade/vim-gitgutter'
+" ----------------------------------------------------------------------------
+" MARK: - File Browsing
+" ----------------------------------------------------------------------------
 
-" syntax checking
-Plugin 'vim-syntastic/syntastic'
+" file system explorer
+Plug 'tpope/vim-vinegar'
 
-" comment stuff out
-Plugin 'tpope/vim-commentary'
+" file system explorer
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" NERDTree git status flags
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 
-" end certain structures
-Plugin 'tpope/vim-endwise'
+" fuzzy find for vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim', { 'on': 'Files' }
+
+" ----------------------------------------------------------------------------
+" MARK: - Language, Highlighting, Linting
+" ----------------------------------------------------------------------------
 
 " language packs (syntax highlighting)
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
-" golang support
-Plugin 'fatih/vim-go'
+" async lint engine
+Plug 'w0rp/ale'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" editorconfig (project specific configurations)
+Plug 'editorconfig/editorconfig-vim'
+
+" Git line diff gutter
+Plug 'airblade/vim-gitgutter'
+
+" todo highlighting
+Plug 'sakshamgupta05/vim-todo-highlight'
+
+" ----------------------------------------------------------------------------
+" MARK: - Utilities
+" ----------------------------------------------------------------------------
+
+" Git wrapper
+Plug 'tpope/vim-fugitive'
+
+" comment stuff out
+Plug 'tpope/vim-commentary'
+
+" auto matching for brackets
+Plug 'jiangmiao/auto-pairs'
+
+" end certain structures
+Plug 'tpope/vim-endwise'
+
+" async find and replace
+Plug 'brooth/far.vim'
+
+" quoting/parenthesizing
+Plug 'tpope/vim-surround'
+
+call plug#end()
