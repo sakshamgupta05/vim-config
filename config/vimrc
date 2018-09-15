@@ -3,7 +3,6 @@
 " ----------------------------------------------------------------------------
 
 " source plugins
-" :runtime plugins.vim
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plugins.vim'
 
 " ----------------------------------------------------------------------------
@@ -53,11 +52,6 @@ set shiftwidth=2
 set background=dark
 colorscheme onedark
 let g:airline_themes='onedark'
-
-" enable true colors
-if has('nvim') || has('termguicolors')
-  set termguicolors
-endif
 
 " remove scrollbars
 set guioptions-=l
