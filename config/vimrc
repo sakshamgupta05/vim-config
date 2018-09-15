@@ -108,6 +108,8 @@ nmap <Leader><space> :nohlsearch<cr>
 nmap <Leader>nt :NERDTreeToggle<cr>
 " find in NERDTree
 nmap <Leader>nf :NERDTreeFind<cr>
+" disable nerdtree for file browsing
+let NERDTreeHijackNetrw = 0
 
 " /
 " / fzf
