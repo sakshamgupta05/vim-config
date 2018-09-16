@@ -13,3 +13,6 @@ endif
 if has('termguicolors')
   set termguicolors
 endif
+
+" neovim bug workaround (paste setup sometimes fails to set nopaste)
+au InsertLeave * set nopaste

@@ -40,6 +40,9 @@ inoremap jj <ESC>
 " change leader key
 let mapleader=' '
 
+" use system's clipboard
+set clipboard=unnamed
+
 " ----------------------------------------------------------------------------
 " MARK: - Utilities
 " ----------------------------------------------------------------------------
@@ -101,7 +104,7 @@ nmap <Leader>l <C-W><C-L>
 " ----------------------------------------------------------------------------
 
 " make it easy to edit vimrc
-nmap <Leader>ev :tabedit $MYVIMRC<cr>
+nmap <Leader>ev :tabedit ~/.vim/config/vimrc<cr>
 
 " turn off search highlight
 nmap <Leader><space> :nohlsearch<cr>
