@@ -64,7 +64,6 @@ set shiftwidth=2
 " colorschemes and statusline
 set background=dark
 colorscheme onedark
-let g:lightline = {'colorscheme': 'onedark'}
 
 " remove scrollbars
 set guioptions-=l
@@ -129,6 +128,24 @@ let NERDTreeHijackNetrw = 0
 map ff :Files<CR>
 " respect .gitignore
 nmap ; :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<cr>
+
+" /
+" / lightline
+" /
+
+" lightline config
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+" fix lightline not showing in vim
+set laststatus=2
 
 " ----------------------------------------------------------------------------
 " MARK: - Auto-Commands
