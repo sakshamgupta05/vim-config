@@ -64,7 +64,7 @@ set shiftwidth=2
 " colorschemes and statusline
 set background=dark
 colorscheme onedark
-let g:airline_themes='onedark'
+let g:lightline = {'colorscheme': 'onedark'}
 
 " remove scrollbars
 set guioptions-=l
