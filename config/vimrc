@@ -75,9 +75,6 @@ set guioptions-=R
 " encoding
 set encoding=UTF-8
 
-" highlight current line
-set cursorline
-
 " ----------------------------------------------------------------------------
 " MARK: - Search
 " ----------------------------------------------------------------------------

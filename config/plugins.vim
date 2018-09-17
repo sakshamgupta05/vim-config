@@ -12,7 +12,7 @@ call plug#begin()
 Plug 'joshdick/onedark.vim'
 
 " status/tabline
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 
 " ----------------------------------------------------------------------------
 " MARK: - File Browsing
@@ -42,9 +42,6 @@ Plug 'w0rp/ale'
 
 " editorconfig (project specific configurations)
 Plug 'editorconfig/editorconfig-vim'
-
-" Git line diff gutter
-Plug 'airblade/vim-gitgutter'
 
 " todo highlighting
 Plug 'sakshamgupta05/vim-todo-highlight'
