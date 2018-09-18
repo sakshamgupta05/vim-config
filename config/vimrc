@@ -151,9 +151,10 @@ set laststatus=2
 " / gitgutter
 " /
 
-" disable all mappings
-let g:gitgutter_map_keys = 0
-
+" remap hunk commands
+nmap ghp <Plug>GitGutterPreviewHunk
+nmap ghs <Plug>GitGutterStageHunk
+nmap ghu <Plug>GitGutterUndoHunk
 " ----------------------------------------------------------------------------
 " MARK: - Auto-Commands
 " ----------------------------------------------------------------------------
