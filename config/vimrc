@@ -147,6 +147,13 @@ let g:lightline = {
 " fix lightline not showing in vim
 set laststatus=2
 
+" /
+" / gitgutter
+" /
+
+" disable all mappings
+let g:gitgutter_map_keys = 0
+
 " ----------------------------------------------------------------------------
 " MARK: - Auto-Commands
 " ----------------------------------------------------------------------------

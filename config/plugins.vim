@@ -14,6 +14,9 @@ Plug 'joshdick/onedark.vim'
 " status/tabline
 Plug 'itchyny/lightline.vim'
 
+" vertical lines for indent
+Plug 'Yggdroot/indentLine'
+
 " ----------------------------------------------------------------------------
 " MARK: - File Browsing
 " ----------------------------------------------------------------------------
@@ -42,6 +45,9 @@ Plug 'w0rp/ale'
 
 " editorconfig (project specific configurations)
 Plug 'editorconfig/editorconfig-vim'
+
+" Git line diff gutter
+Plug 'airblade/vim-gitgutter'
 
 " todo highlighting
 Plug 'sakshamgupta05/vim-todo-highlight'
