@@ -90,20 +90,27 @@ set incsearch
 set splitbelow
 set splitright
 
-nmap <Leader>j <C-W><C-J>
-nmap <Leader>k <C-W><C-K>
-nmap <Leader>h <C-W><C-H>
-nmap <Leader>l <C-W><C-L>
+nnoremap <Leader>j <C-W><C-J>
+nnoremap <Leader>k <C-W><C-K>
+nnoremap <Leader>h <C-W><C-H>
+nnoremap <Leader>l <C-W><C-L>
 
 " ----------------------------------------------------------------------------
 " MARK: - Mappings
 " ----------------------------------------------------------------------------
 
-" make it easy to edit vimrc
-nmap <Leader>ev :tabedit ~/.vim/config/vimrc<cr>
+" edit vimrc in a new tab
+nnoremap <Leader>ev :tabedit ~/.vim/config/vimrc<cr>
+" source vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " turn off search highlight
-nmap <Leader><space> :nohlsearch<cr>
+nnoremap <Leader><space> :nohlsearch<cr>
+
+" vertical split
+nnoremap <Leader>vsp :vsplit<cr>
+" horizontal split
+nnoremap <Leader>sp :split<cr>
 
 " ----------------------------------------------------------------------------
 " MARK: - Plugin Specifics
@@ -114,9 +121,9 @@ nmap <Leader><space> :nohlsearch<cr>
 " /
 
 " make NERDTreeToggle
-nmap <Leader>nt :NERDTreeToggle<cr>
+nnoremap <Leader>nt :NERDTreeToggle<cr>
 " find in NERDTree
-nmap <Leader>nf :NERDTreeFind<cr>
+nnoremap <Leader>nf :NERDTreeFind<cr>
 " disable nerdtree for file browsing
 let NERDTreeHijackNetrw = 0
 
@@ -124,10 +131,12 @@ let NERDTreeHijackNetrw = 0
 " / fzf
 " /
 
-" search everywhere in directory
-map ff :Files<CR>
-" respect .gitignore
-nmap ; :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<cr>
+" search git files in project
+nnoremap ; :GFiles<CR>
+" search files in project
+nnoremap <Leader>ff :Files<CR>
+" search pattern in project
+nnoremap <Leader>ag :Ag<CR>
 
 " /
 " / lightline
@@ -152,15 +161,10 @@ set laststatus=2
 " /
 
 " remap hunk commands
-nmap ghp <Plug>GitGutterPreviewHunk
-nmap ghs <Plug>GitGutterStageHunk
-nmap ghu <Plug>GitGutterUndoHunk
+nnoremap ghp <Plug>GitGutterPreviewHunk
+nnoremap ghs <Plug>GitGutterStageHunk
+nnoremap ghu <Plug>GitGutterUndoHunk
+
 " ----------------------------------------------------------------------------
 " MARK: - Auto-Commands
 " ----------------------------------------------------------------------------
-
-" automatically source the vimrc file on save
-augroup autosourcing
-  autocmd!
-  autocmd BufWritePost vimrc source %
-augroup END
