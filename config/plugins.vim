@@ -8,8 +8,8 @@ call plug#begin()
 " MARK: - Visual
 " ----------------------------------------------------------------------------
 
-" onedark theme
-Plug 'joshdick/onedark.vim'
+" vim theme
+Plug 'morhetz/gruvbox'
 
 " status/tabline
 Plug 'itchyny/lightline.vim'

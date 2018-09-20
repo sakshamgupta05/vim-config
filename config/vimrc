@@ -34,11 +34,14 @@ set number
 " show line number on the cursor position
 set ruler
 
-" Remap Esc key
-inoremap jj <ESC>
-
 " change leader key
 let mapleader=' '
+
+" ignore case when searching
+set ignorecase
+
+" ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smartcase
 
 " use system's clipboard
 set clipboard=unnamed
@@ -63,7 +66,7 @@ set shiftwidth=2
 
 " colorschemes and statusline
 set background=dark
-colorscheme onedark
+colorscheme gruvbox
 
 " remove scrollbars
 set guioptions-=l
@@ -90,19 +93,31 @@ set incsearch
 set splitbelow
 set splitright
 
-nnoremap <Leader>j <C-W><C-J>
-nnoremap <Leader>k <C-W><C-K>
-nnoremap <Leader>h <C-W><C-H>
-nnoremap <Leader>l <C-W><C-L>
+nnoremap <Leader>w <C-w>
 
 " ----------------------------------------------------------------------------
 " MARK: - Mappings
 " ----------------------------------------------------------------------------
 
+" Remap esc key
+inoremap jk <ESC>
+inoremap JK <ESC>
+
+" remap colon
+nnoremap ; :
+
+" move up and down more naturally in wrap
+nnoremap j gj
+nnoremap k gk
+
+" exit terminal mode
+tnoremap <Leader>e <C-\><C-n> 
+vnoremap <Leader>e <ESC>
+
 " edit vimrc in a new tab
 nnoremap <Leader>ev :tabedit ~/.vim/config/vimrc<cr>
 " source vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <Leader>sv :source $MYVIMRC<cr>
 
 " turn off search highlight
 nnoremap <Leader><space> :nohlsearch<cr>
@@ -111,40 +126,36 @@ nnoremap <Leader><space> :nohlsearch<cr>
 nnoremap <Leader>vsp :vsplit<cr>
 " horizontal split
 nnoremap <Leader>sp :split<cr>
+" quit
+nnoremap <Leader>q :q<cr>
 
 " ----------------------------------------------------------------------------
 " MARK: - Plugin Specifics
 " ----------------------------------------------------------------------------
 
-" /
-" / NERDTree
-" /
-
+""" NERDTree {{
 " make NERDTreeToggle
 nnoremap <Leader>nt :NERDTreeToggle<cr>
 " find in NERDTree
 nnoremap <Leader>nf :NERDTreeFind<cr>
 " disable nerdtree for file browsing
 let NERDTreeHijackNetrw = 0
+""" }}
 
-" /
-" / fzf
-" /
 
+""" fzf {{
 " search git files in project
-nnoremap ; :GFiles<CR>
+nnoremap <Leader>gf :GFiles<CR>
 " search files in project
 nnoremap <Leader>ff :Files<CR>
 " search pattern in project
 nnoremap <Leader>ag :Ag<CR>
+""" }}
 
-" /
-" / lightline
-" /
-
+""" lightline {{
 " lightline config
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -155,16 +166,14 @@ let g:lightline = {
       \ }
 " fix lightline not showing in vim
 set laststatus=2
+""" }}
 
-" /
-" / gitgutter
-" /
+""" fugitive {{
+" side by side diff
+nnoremap <Leader>gd :Gvdiff<cr>
+""" }}
 
-" remap hunk commands
-nnoremap ghp <Plug>GitGutterPreviewHunk
-nnoremap ghs <Plug>GitGutterStageHunk
-nnoremap ghu <Plug>GitGutterUndoHunk
-
-" ----------------------------------------------------------------------------
-" MARK: - Auto-Commands
-" ----------------------------------------------------------------------------
+""" IndentLine {{
+" make indentline faster
+let g:indentLine_faster = 1
+""" }}
