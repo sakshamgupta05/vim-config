@@ -74,4 +74,7 @@ Plug 'brooth/far.vim'
 " quoting/parenthesizing
 Plug 'tpope/vim-surround'
 
+" run async shell commands
+Plug 'skywind3000/asyncrun.vim'
+ 
 call plug#end()

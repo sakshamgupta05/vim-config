@@ -29,7 +29,7 @@ syntax enable
 set backspace=indent,eol,start
 
 " activate line numbers
-set number
+set number relativenumber
 
 " show line number on the cursor position
 set ruler
@@ -178,13 +178,76 @@ nnoremap <Leader>gd :Gvdiff<cr>
 let g:indentLine_faster = 1
 """ }}
 
+""" asyncrun {{
+" set the quickfix window 6 lines height.
+let g:asyncrun_open = 6
+" ring the bell to notify you job finished
+let g:asyncrun_bell = 1
+" F10: toggle quickfix window
+nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+" run `Gpush` and `Gfetch` async in vim-fugitive
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+""" }}
+
+""" ale{{
+" disable lint on text change
+" let g:ale_lint_on_text_changed = 'never'
+""" }}
+
 " ----------------------------------------------------------------------------
 " MARK: - Auto Commands
 " ----------------------------------------------------------------------------
 
-augroup mapCompile
+" toggle relative numbers while inserting & switching buffers
+augroup numbertoggle
   autocmd!
-  autocmd filetype cpp nnoremap <F5> :w <bar> !g++ -ulimit -Wall -Wno-unused-result -std=c++11   -O2   % -o %:r && ./%:r <CR>
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+augroup END
+
+" fix vim slowdowns in scrolling in large ruby files
+augroup rubyPerformanceFix
+  autocmd!
+  autocmd filetype ruby set ttyfast
+  autocmd filetype ruby set lazyredraw
+  autocmd filetype ruby set re=1
+augroup END
+
+" C compile key bindings
+" F2: grep
+" F4: update Makefile with cmake.
+" F5: run the single file
+" F6: run project test
+" F7: build project
+" F8: run project
+" F9: compile the single file
+augroup compileC
+  autocmd!
+  autocmd filetype c noremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd filetype c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd filetype c noremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
+  autocmd filetype c noremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
+  autocmd filetype c noremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
+  autocmd filetype c nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
+  if has('win32') || has('win64')
+      autocmd filetype c noremap <silent><F2> :AsyncRun! -cwd=<root> findstr /n /s /C:"<C-R><C-W>" "\%CD\%\*.h" "\%CD\%\*.c*" <cr>
+  else
+      autocmd filetype c noremap <silent><F2> :AsyncRun! -cwd=<root> grep -n -s -R <C-R><C-W> --include='*.h' --include='*.c*' '<root>' <cr>
+  endif
+augroup END
+
+" CPP compile key bindings
+" F5: run the single file
+" F9: compile the single file
+augroup compileCpp
+  autocmd!
+  autocmd filetype cpp noremap <silent> <F9> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd filetype cpp noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+augroup END
+
+" General compile key bindings
+augroup compileProj
+  autocmd!
   autocmd filetype java nnoremap <F5> :w <bar> !javac % && java -enableassertions %:r <CR>
   autocmd filetype python nnoremap <F5> :w <bar> !python % <CR>
   autocmd filetype perl nnoremap <F5> :w <bar> !perl % <CR>
