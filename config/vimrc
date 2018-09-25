@@ -190,6 +190,10 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 """ }}
 
 """ ale{{
+" disable ale by default
+let g:ale_enabled = 0
+" toggle ale
+nnoremap <Leader>at :ALEToggle<cr>
 " disable lint on text change
 " let g:ale_lint_on_text_changed = 'never'
 " if don't want linters to run on opening a file

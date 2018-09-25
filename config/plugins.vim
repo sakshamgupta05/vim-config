@@ -41,7 +41,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 
 " async lint engine
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " editorconfig (project specific configurations)
 Plug 'editorconfig/editorconfig-vim'
