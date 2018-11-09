@@ -17,6 +17,9 @@ Plug 'itchyny/lightline.vim'
 " vertical lines for indent
 Plug 'Yggdroot/indentLine'
 
+" css highlight color
+Plug 'ap/vim-css-color'
+
 " ----------------------------------------------------------------------------
 " MARK: - File Browsing
 " ----------------------------------------------------------------------------
@@ -64,6 +67,9 @@ Plug 'tpope/vim-commentary'
 
 " auto matching for brackets
 Plug 'jiangmiao/auto-pairs'
+
+" emmet for vim
+Plug 'mattn/emmet-vim'
 
 " end certain structures
 Plug 'tpope/vim-endwise'

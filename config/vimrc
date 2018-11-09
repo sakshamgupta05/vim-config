@@ -19,6 +19,9 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plugins.vim'
 " MARK: - Basic
 " ----------------------------------------------------------------------------
 
+" use vim over vi
+set nocompatible
+
 " enable scrolling
 set mouse=a
 
@@ -76,6 +79,10 @@ set guioptions-=R
 
 " encoding
 set encoding=UTF-8
+set fileencoding=UTF-8
+
+" flash on bell
+set  visualbell
 
 " ----------------------------------------------------------------------------
 " MARK: - Search
@@ -103,12 +110,9 @@ nnoremap <Leader>w <C-w>
 inoremap jk <ESC>
 inoremap JK <ESC>
 
-" remap colon
-nnoremap ; :
-
 " move up and down more naturally in wrap
-nnoremap j gj
-nnoremap k gk
+noremap j gj
+noremap k gk
 
 " exit terminal mode
 tnoremap <Leader>e <C-\><C-n> 
@@ -128,6 +132,13 @@ nnoremap <Leader>vsp :vsplit<cr>
 nnoremap <Leader>sp :split<cr>
 " quit
 nnoremap <Leader>q :q<cr>
+
+" delete without copy
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+nnoremap <leader>c "_c
+xnoremap <leader>c "_c
 
 " ----------------------------------------------------------------------------
 " MARK: - Plugin Specifics
@@ -178,6 +189,14 @@ nnoremap <Leader>gd :Gvdiff<cr>
 let g:indentLine_faster = 1
 """ }}
 
+""" Emmet {{
+let g:user_emmet_settings = {
+      \  'javascript.jsx' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
+""" }}
+
 """ asyncrun {{
 " set the quickfix window 6 lines height.
 let g:asyncrun_open = 6
@@ -191,7 +210,7 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 """ ale{{
 " disable ale by default
-let g:ale_enabled = 0
+" let g:ale_enabled = 0
 " toggle ale
 nnoremap <Leader>at :ALEToggle<cr>
 " disable lint on text change
