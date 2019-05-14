@@ -235,9 +235,9 @@ augroup END
 " fix vim slowdowns in scrolling in large ruby files
 augroup rubyPerformanceFix
   autocmd!
-  autocmd filetype ruby set ttyfast
-  autocmd filetype ruby set lazyredraw
-  autocmd filetype ruby set re=1
+  autocmd FileType ruby set ttyfast
+  autocmd FileType ruby set lazyredraw
+  autocmd FileType ruby set re=1
 augroup END
 
 " C compile key bindings
@@ -250,16 +250,16 @@ augroup END
 " F9: compile the single file
 augroup compileC
   autocmd!
-  autocmd filetype c noremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-  autocmd filetype c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-  autocmd filetype c noremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
-  autocmd filetype c noremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
-  autocmd filetype c noremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
-  autocmd filetype c nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
+  autocmd FileType c noremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType c noremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
+  autocmd FileType c noremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
+  autocmd FileType c noremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
+  autocmd FileType c nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
   if has('win32') || has('win64')
-      autocmd filetype c noremap <silent><F2> :AsyncRun! -cwd=<root> findstr /n /s /C:"<C-R><C-W>" "\%CD\%\*.h" "\%CD\%\*.c*" <cr>
+      autocmd FileType c noremap <silent><F2> :AsyncRun! -cwd=<root> findstr /n /s /C:"<C-R><C-W>" "\%CD\%\*.h" "\%CD\%\*.c*" <cr>
   else
-      autocmd filetype c noremap <silent><F2> :AsyncRun! -cwd=<root> grep -n -s -R <C-R><C-W> --include='*.h' --include='*.c*' '<root>' <cr>
+      autocmd FileType c noremap <silent><F2> :AsyncRun! -cwd=<root> grep -n -s -R <C-R><C-W> --include='*.h' --include='*.c*' '<root>' <cr>
   endif
 augroup END
 
@@ -268,15 +268,15 @@ augroup END
 " F9: compile the single file
 augroup compileCpp
   autocmd!
-  autocmd filetype cpp noremap <silent> <F9> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-  autocmd filetype cpp noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType cpp noremap <silent> <F9> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType cpp noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 augroup END
 
 " General compile key bindings
 augroup compileProj
   autocmd!
-  autocmd filetype java nnoremap <F5> :w <bar> !javac % && java -enableassertions %:r <CR>
-  autocmd filetype python nnoremap <F5> :w <bar> !python % <CR>
-  autocmd filetype perl nnoremap <F5> :w <bar> !perl % <CR>
-  autocmd filetype go nnoremap <F5> :w <bar> !go build % && ./%:r <CR>
+  autocmd FileType java nnoremap <F5> :w <bar> !javac % && java -enableassertions %:r <CR>
+  autocmd FileType python nnoremap <F5> :w <bar> !python % <CR>
+  autocmd FileType perl nnoremap <F5> :w <bar> !perl % <CR>
+  autocmd FileType go nnoremap <F5> :w <bar> !go build % && ./%:r <CR>
 augroup END
