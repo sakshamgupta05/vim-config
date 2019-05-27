@@ -10,7 +10,7 @@ My Vim/Neovim configuration file
 we'll also symlink it for Vim:
 ```sh
 $ mkdir ~/.config
-$ git clone git@github.com:sakshamgupta05/vim-config.git ~/.config/nvim
+$ git clone https://github.com/sakshamgupta05/vim-config.git ~/.config/nvim
 $ ln -s ~/.config/nvim ~/.vim
 ```
 
