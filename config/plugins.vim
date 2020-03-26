@@ -44,7 +44,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 
 " async lint engine
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " editorconfig (project specific configurations)
 Plug 'editorconfig/editorconfig-vim'
@@ -54,6 +54,12 @@ Plug 'airblade/vim-gitgutter'
 
 " todo highlighting
 Plug 'sakshamgupta05/vim-todo-highlight'
+
+" lsp
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " ----------------------------------------------------------------------------
 " MARK: - Utilities
@@ -82,5 +88,5 @@ Plug 'tpope/vim-surround'
 
 " run async shell commands
 Plug 'skywind3000/asyncrun.vim'
- 
+
 call plug#end()

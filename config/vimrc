@@ -84,6 +84,14 @@ set fileencoding=UTF-8
 " flash on bell
 set  visualbell
 
+" visual indicator for 80 char limit in a row
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+" match ErrorMsg '\%>80v.\+'
+
 " ----------------------------------------------------------------------------
 " MARK: - Search
 " ----------------------------------------------------------------------------
@@ -115,7 +123,7 @@ noremap j gj
 noremap k gk
 
 " exit terminal mode
-tnoremap <Leader>e <C-\><C-n> 
+tnoremap <Leader>e <C-\><C-n>
 vnoremap <Leader>e <ESC>
 
 " edit vimrc in a new tab
@@ -209,17 +217,62 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 """ }}
 
 """ ale{{
-" disable ale by default
-" let g:ale_enabled = 0
+
 " toggle ale
 nnoremap <Leader>at :ALEToggle<cr>
+" let g:ale_completion_enabled = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
 " disable lint on text change
-" let g:ale_lint_on_text_changed = 'never'
-" if don't want linters to run on opening a file
-" let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
 " permanent left coulumn to show errors
 " let g:ale_sign_column_always = 1
+" if don't want linters to run on opening a file
+" let g:ale_lint_on_enter = 0
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+
+noremap <Leader>ad :ALEGoToDefinition<CR>
+nnoremap <leader>af :ALEFix<cr>
+noremap <Leader>ar :ALEFindReferences<CR>
+
+"Move between linting errors
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
+
+let g:ale_elixir_elixir_ls_release='/Users/saksham/elixir-ls/release'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'elixir': ['credo','elixir-ls']
+\ }
+
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\   'elixir': ['mix_format']
+\ }
+
 """ }}
+
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " ----------------------------------------------------------------------------
 " MARK: - Auto Commands
@@ -257,9 +310,9 @@ augroup compileC
   autocmd FileType c noremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
   autocmd FileType c nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
   if has('win32') || has('win64')
-      autocmd FileType c noremap <silent><F2> :AsyncRun! -cwd=<root> findstr /n /s /C:"<C-R><C-W>" "\%CD\%\*.h" "\%CD\%\*.c*" <cr>
+    autocmd FileType c noremap <silent><F2> :AsyncRun! -cwd=<root> findstr /n /s /C:"<C-R><C-W>" "\%CD\%\*.h" "\%CD\%\*.c*" <cr>
   else
-      autocmd FileType c noremap <silent><F2> :AsyncRun! -cwd=<root> grep -n -s -R <C-R><C-W> --include='*.h' --include='*.c*' '<root>' <cr>
+    autocmd FileType c noremap <silent><F2> :AsyncRun! -cwd=<root> grep -n -s -R <C-R><C-W> --include='*.h' --include='*.c*' '<root>' <cr>
   endif
 augroup END
 
