@@ -14,7 +14,7 @@ $ git clone https://github.com/sakshamgupta05/vim-config.git ~/.config/nvim
 $ ln -s ~/.config/nvim ~/.vim
 ```
 
-3. Install [the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
+**3.** Install [the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
 
 **4.** Open Vim/Neovim by typing `vim`/`nvim`
 
