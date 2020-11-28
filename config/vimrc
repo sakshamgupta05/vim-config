@@ -47,7 +47,11 @@ set ignorecase
 set smartcase
 
 " use system's clipboard
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 " ----------------------------------------------------------------------------
 " MARK: - Utilities
