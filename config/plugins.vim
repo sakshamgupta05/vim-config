@@ -36,6 +36,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Golang support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " ----------------------------------------------------------------------------
 " MARK: - Language, Highlighting, Linting
 " ----------------------------------------------------------------------------
