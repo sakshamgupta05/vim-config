@@ -59,10 +59,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sakshamgupta05/vim-todo-highlight'
 
 " lsp
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 " ----------------------------------------------------------------------------
 " MARK: - Utilities
