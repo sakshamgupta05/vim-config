@@ -12,17 +12,17 @@ if has('nvim')
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/neovim.vim'
 endif
 
-let g:coc_global_extensions = [
-      \'coc-flutter',
-      \'coc-json',
-      \'coc-yaml'
-      \]
+" let g:coc_global_extensions = [
+"       \'coc-flutter',
+"       \'coc-json',
+"       \'coc-yaml'
+"       \]
 
 " source plugins
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plugins.vim'
 
-" source plugins
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/coc.vim'
+" " source plugins
+" execute 'source' fnamemodify(expand('<sfile>'), ':h').'/coc.vim'
 
 " ----------------------------------------------------------------------------
 " MARK: - Basic
@@ -160,6 +160,14 @@ xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
 nnoremap <leader>c "_c
 xnoremap <leader>c "_c
+
+nnoremap <Leader>tt :tabnew<cr>
+nnoremap <Leader>tj :tabp<cr>
+nnoremap <Leader>tk :tabn<cr>
+nnoremap <Leader>th :tabfirst<cr>
+nnoremap <Leader>tl :tablast<cr>
+nnoremap <Leader>tm :tabm<space>
+nnoremap <Leader>td :tabclose<cr>
 
 " ----------------------------------------------------------------------------
 " MARK: - Plugin Specifics

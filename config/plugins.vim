@@ -64,8 +64,8 @@ Plug 'sakshamgupta05/vim-todo-highlight'
 "     \ 'do': 'bash install.sh',
 "     \ }
 
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" " Autocomplete
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ----------------------------------------------------------------------------
 " MARK: - Utilities
