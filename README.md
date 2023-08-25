@@ -19,3 +19,11 @@ $ ln -s ~/.config/nvim ~/.vim
 **4.** Open Vim/Neovim by typing `vim`/`nvim`
 
 Enjoy!
+
+### Vimdiff
+
+``````
+git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+``````
+

@@ -12,8 +12,17 @@ if has('nvim')
   execute 'source' fnamemodify(expand('<sfile>'), ':h').'/neovim.vim'
 endif
 
+let g:coc_global_extensions = [
+      \'coc-flutter',
+      \'coc-json',
+      \'coc-yaml'
+      \]
+
 " source plugins
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/plugins.vim'
+
+" source plugins
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/coc.vim'
 
 " ----------------------------------------------------------------------------
 " MARK: - Basic
